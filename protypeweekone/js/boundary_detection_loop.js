@@ -8,7 +8,7 @@ var player ;
     canvas = document.getElementById("canvas");
     context = canvas.getContext("2d")
     player = new Player();
-    player.vx = 5;
+    player.vx = 25;
     player.vy = 0;
     
     timer = setInterval(animate,interval);
@@ -28,7 +28,7 @@ var player ;
 	{
 		player.vx = -player.vx;	
 	}
-    if(player.x > canvas.width + player.width/2)
+    if(player.x < player.width/2)
 	{
 		player.vx = -player.vx;	
 	}
