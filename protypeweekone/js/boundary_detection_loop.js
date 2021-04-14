@@ -19,7 +19,7 @@ var player ;
     {
         context.clearRect(0,0,canvas.width,canvas.height);
         player.move();
-       /* if (player.x > canvas.width + player.width/2)
+        if (player.x > canvas.width + player.width/2)
         {
             player.x = -player.width/2;
         }
@@ -32,6 +32,6 @@ var player ;
 	{
 		player.vx = -player.vx;	
 	}
-    */
+    
         player.draw();
     }
