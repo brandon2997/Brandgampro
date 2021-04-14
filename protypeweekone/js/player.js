@@ -19,6 +19,7 @@ function Player()
            context.arc(this.x,this.y,40, 0,2 * Math.PI)
            context.stroke()
            context.fill() 
+         
            
         context.restore();
     }
@@ -27,4 +28,13 @@ function Player()
         this.x += this.vx;
         this.y += this.vy;
     }
+this.counter =function()
+{
+    context.save();
+    
+    context.font = "30px Arial"
+    context.fillStyle = "black"
+    context.fillText("Score: " + counter.toString(), canvas.width - 150, 30);
+    context.restore();
+}
 }
