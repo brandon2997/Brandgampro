@@ -1,5 +1,6 @@
 function Player()
 {
+    
     this.x = canvas.width/2;
     this.y = canvas.height/2;
 
@@ -13,9 +14,12 @@ function Player()
     this.draw = function()
     {
         context.save();
-            context.fillStyle = this.color;
-            context.translate(this.x,this.y);
-            context.fillRect((-this.width/2), (-this.height/2), this.width, this.height);
+           context.fillStyle = this.color;
+           context.beginPath();
+           context.arc(this.x,this.y,40, 0,2 * Math.PI)
+           context.stroke()
+           context.fill() 
+           
         context.restore();
     }
     this.move = function()
