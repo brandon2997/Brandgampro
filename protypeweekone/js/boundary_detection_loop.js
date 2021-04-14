@@ -9,7 +9,7 @@ var player ;
     context = canvas.getContext("2d")
     player = new Player();
     player.vx = 25;
-    player.vy = 0;
+    player.vy = -35;
     
     timer = setInterval(animate,interval);
 
@@ -32,6 +32,14 @@ var player ;
 	{
 		player.vx = -player.vx;	
 	}
-    
+    if (player.y < player.height/2)
+    {
+        player.vy = -player.vy;
+    }
+	
+     if (player.y > canvas.height - player.height/2)
+   {
+        player.vy = -player.vy;
+    }
         player.draw();
     }
