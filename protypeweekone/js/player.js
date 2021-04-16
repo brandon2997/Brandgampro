@@ -13,9 +13,11 @@ function Player()
     this.color = "#ff0100";
     this.drawrec = function()
     {
+        context.save();
     context.fillstyle = this.color 
     context.fillRect(10,350, 30,90)
-    }
+    context.restore();
+}
     this.draw = function()
     {
         context.save();

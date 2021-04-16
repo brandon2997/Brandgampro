@@ -11,11 +11,11 @@ var counter = 0;
     player.vx = 0;
     player.vy = 0;
     
-   // timer = setInterval(animate,interval);
+ timer = setInterval(animate,interval);
 
 
 
-    /*function animate()
+    function animate()
     {
         if(counter == 2){
         context.clearRect(0,0,canvas.width,canvas.height);
@@ -53,4 +53,4 @@ var counter = 0;
         player.draw();
         player.counter();
        
-    }*/
+    }
