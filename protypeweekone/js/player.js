@@ -11,11 +11,16 @@ function Player()
     this.vy = 0;
 
     this.color = "#ff0100";
+    this.drawrec = function()
+    {
+    context.fillstyle = this.color 
+    context.fillRect(10,350, 30,90)
+    }
     this.draw = function()
     {
         context.save();
            context.fillStyle = this.color;
-           context.beginPath();
+           context.beginPath(); 
            context.arc(this.x,this.y,40, 0,2 * Math.PI)
            context.stroke()
            context.fill() 
