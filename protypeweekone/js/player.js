@@ -43,4 +43,21 @@ function Player() {
         context.fillText("Score: " + counter.toString(), canvas.width - 150, 30);
         context.restore();
     }
+    this.top = function()
+    {
+        return this.y - this.height/2
+    } 
+    this.bott = function()
+    {
+        return this.y + this.width/2
+    } 
+    this.left = function()
+    {
+        return this.x + this.width/2
+    } 
+    this.right = function()
+    {
+        return this.x - this.width/2
+    } 
+  
 }
