@@ -10,11 +10,12 @@ function Player() {
     this.vy = 0;
 
     this.color = "#ff0100";
+    
 
     this.drawrec = function () {
         context.save();
         context.translate(this.x, this.y)
-        console.log("Working")
+       // console.log("Working")
         context.fillStyle = this.color
         context.fillRect((-this.width/2), (-this.height/2), this.width, this.height)
         context.restore();
@@ -24,7 +25,7 @@ function Player() {
         context.translate(this.x,this.y)
         context.fillStyle = this.color;
         context.beginPath();
-        context.arc(0, 0, 40, 0, 2 * Math.PI)
+        context.arc(0, 0, this.height/2, 0, 2 * Math.PI)
         context.stroke()
         context.fill()
 
@@ -49,15 +50,15 @@ function Player() {
     } 
     this.bott = function()
     {
-        return this.y + this.width/2
+        return this.y + this.height/2
     } 
     this.left = function()
     {
-        return this.x + this.width/2
+        return this.x - this.width/2
     } 
     this.right = function()
     {
-        return this.x - this.width/2
+        return this.x + this.width/2
     } 
   
 }

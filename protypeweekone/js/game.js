@@ -11,6 +11,8 @@ context = canvas.getContext("2d")
 ball = new Player();
 ball.vx = 10;
 ball.vy = 10;
+ball.height = 20
+ball.width = 20
 
 paddle = new Player()
 paddle.width = 20
@@ -23,11 +25,12 @@ timer = setInterval(animate, interval);
 
 
 function hitTestObject(ball, paddle) {
-    console.log("workin")
-    if (paddle.left() < ball.right() &&
-        paddle.right() > ball.left() &&
-        paddle.top() < ball.bott() &&
-        paddle.bott() > ball.top()) {
+    
+    if (
+        paddle.right() > ball.left() && 
+        paddle.top() < ball.top() &&
+        paddle.bott() > ball.bott()
+     ) {
         return true;
     }
     return false;
@@ -39,8 +42,9 @@ function animate() {
     context.clearRect(0, 0, canvas.width, canvas.height)
 
     //Sets up boundary for counter
-
+    
     if (hitTestObject(ball, paddle)) {
+        ball.x = paddle.x + paddle.width/2;
         ball.vx = -ball.vx
         ball.vy = -ball.vy
         
@@ -52,11 +56,14 @@ function animate() {
         counter += 1;
 
     }
-if (ball.x < ball.width / 2) {
+    */
+    if (ball.x < ball.width / 2 - 100) {
         ball.vx = -(ball.vx);
+        ball.x = canvas.width/2
+        ball.y = canvas.height/2
         counter += 1;
     }
-    */
+    
 
     if (ball.x > canvas.width - ball.width / 2) {
         ball.vx = -ball.vx;
@@ -92,7 +99,7 @@ if (ball.x < ball.width / 2) {
     }
     if (paddle.y > paddle.height / 2) {
         if (w) {
-            console.log("Moving up");
+            //console.log("Moving up");
             paddle.y += -10;
         }
 
@@ -112,7 +119,7 @@ if (ball.x < ball.width / 2) {
     //paddle.y += -2;
     //}
     ball.draw();
-    ball.counter();
+    //ball.counter();
     //console.log(paddle)
     paddle.drawrec()
 }
