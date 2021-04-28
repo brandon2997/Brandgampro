@@ -54,18 +54,42 @@ function animate() {
 
     }
 
+    if (paddle.y < canvas.height - paddle.height /2)
+    {
+       if (s) {
+    console.log("Moving down");
+    paddle.y += 2;
+}    
 
 
+else if (paddle.y > canvas.height - paddle.height /2)
+    {
+        paddle.y = 0;
+    }
+}
+if (paddle.y > paddle.height /2)
+{
+if (w) {
+    console.log("Moving up");
+    paddle.y += -2;
+    }
+
+
+else if (paddle.y < paddle.height /2)
+    {
+        paddle.y = 0;
+    }
+}
     ball.move()
     //handles paddle movement
-    if (s) {
-        console.log("Moving down");
-        paddle.y += 2;
-    }
-    if (w) {
-        console.log("Moving up");
-        paddle.y += -2;
-    }
+   // if (s) {
+     //   console.log("Moving down");
+       // paddle.y += 2;
+    //}
+    //if (w) {
+      //  console.log("Moving up");
+        //paddle.y += -2;
+    //}
     ball.draw();
     ball.counter();
     //console.log(paddle)
