@@ -60,5 +60,16 @@ function Player() {
     {
         return this.x + this.width/2
     } 
-  
+    this.hitTestObject= function(obj) {
+    
+        if (
+            this.right() > obj.left() && 
+            this.top() < obj.top() &&
+            this.bott() > obj.bott()
+         ) {
+            return true;
+        }
+        return false;
+    }
+    
 }

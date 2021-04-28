@@ -10,7 +10,7 @@ canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
 ball = new Player();
 ball.vx = 10;
-ball.vy = 10;
+ball.vy = 0;
 ball.height = 20
 ball.width = 20
 
@@ -24,17 +24,6 @@ timer = setInterval(animate, interval);
 
 
 
-function hitTestObject(ball, paddle) {
-    
-    if (
-        paddle.right() > ball.left() && 
-        paddle.top() < ball.top() &&
-        paddle.bott() > ball.bott()
-     ) {
-        return true;
-    }
-    return false;
-}
 
 
 function animate() {
@@ -43,11 +32,29 @@ function animate() {
 
     //Sets up boundary for counter
     
-    if (hitTestObject(ball, paddle)) {
-        ball.x = paddle.x + paddle.width/2;
-        ball.vx = -ball.vx
-        ball.vy = -ball.vy
+    if (paddle.hitTestObject(ball)) {
         
+        //ball.vx = -ball.vx
+        //ball.vy = -ball.vy
+        if (ball.y < paddle.y - paddle.height/6)
+        {
+            ball.x = paddle.x + paddle.width/2
+            console.log("w")
+            ball.vx= 5
+            ball.vy= -5
+
+        }
+        else if (ball.y < paddle.y + paddle.height/6)
+        {
+            ball.x = paddle.x + paddle.width/2
+            console.log("l")
+            ball.vx= 6
+            ball.vy= 6
+        }
+        else if (ball.y < paddle.y)
+        {
+            ball.vx= 6
+        }
     }
 
 
