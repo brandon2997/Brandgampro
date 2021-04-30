@@ -11,7 +11,10 @@ function Player() {
 
     this.color = "#ff0100";
     
-
+this.score = function ()
+{
+    
+}
     this.drawrec = function () {
         context.save();
         context.translate(this.x, this.y)
@@ -49,7 +52,8 @@ function Player() {
 
         context.font = "30px Arial"
         context.fillStyle = "black"
-        context.fillText("Score: " + counter.toString(), canvas.width - 150, 30);
+        context.fillText("Player One's Score: " + p1soc.toString(), canvas.width - 1000, 30);
+        context.fillText("Player Two's Score: " + p2soc.toString(), canvas.width - 1000, 60);
         context.restore();
     }
     this.top = function()

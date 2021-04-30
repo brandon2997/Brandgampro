@@ -6,6 +6,9 @@ var ball;
 var paddle;
 var counter = 0;
 
+p1soc = 0;
+p2soc = 0;
+
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
 ball = new Player();
@@ -81,7 +84,7 @@ function animate() {
         ball.vx = -(ball.vx);
         ball.x = canvas.width/2
         ball.y = canvas.height/2
-        counter += 1;
+        p1soc += 1;
     }
     
 
@@ -89,7 +92,7 @@ function animate() {
         ball.vx = -ball.vx;
         ball.x = canvas.width/2
         ball.y = canvas.height/2
-        //counter += 1;
+        p2soc += 1;
     }
     if (ball.y < ball.height / 2) {
         ball.vy = -(ball.vy);
@@ -173,7 +176,7 @@ function animate() {
     //paddle.y += -2;
     //}
     ball.draw();
-    //ball.counter();
+    ball.counter();
    //console.log(paddle2)
     paddle.drawrec()
     paddle2.drawrec2()
