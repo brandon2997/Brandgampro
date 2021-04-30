@@ -180,5 +180,6 @@ function animate() {
    //console.log(paddle2)
     paddle.drawrec()
     paddle2.drawrec2()
+    paddle.drawline()
     
 }

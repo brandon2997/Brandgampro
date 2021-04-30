@@ -31,6 +31,17 @@ this.score = function ()
         context.fillRect((-this.width/2), (-this.height/2), this.width, this.height)
         context.restore();
     }
+    this.drawline=function()
+    {
+        context.save();
+        context.strokeStyle = context.color;
+        context.moveTo (512,0);
+        context.lineTo (512, 800);
+        context.closePath();
+        context.linewidth = 2
+        context.stroke();
+        context.restore();
+    }
     this.draw = function () {
         context.save();
         context.translate(this.x,this.y)
