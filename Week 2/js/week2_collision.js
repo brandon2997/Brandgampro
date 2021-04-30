@@ -1,4 +1,4 @@
-//Declare my variables
+////Declare my variables
 
 var canvas;
 var context;

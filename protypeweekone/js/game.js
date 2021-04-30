@@ -18,7 +18,12 @@ paddle = new Player()
 paddle.width = 20
 paddle.height = 100
 paddle.x = paddle.width / 2 + 10
-paddle.y = canvas.height / 2
+paddle.y = canvas.height / 2 
+paddle2 = new Player()
+paddle2.width = 20
+paddle2.height = 100
+paddle2.x = canvas.width - paddle2.width
+paddle2.y = (canvas.height/2)
 
 timer = setInterval(animate, interval);
 
@@ -34,9 +39,10 @@ function animate() {
     
     if (paddle.hitTestObject(ball)) {
         
-        //ball.vx = -ball.vx
-        //ball.vy = -ball.vy
-        if (ball.y < paddle.y - paddle.height/6)
+        ball.vx = -ball.vx
+        ball.vy = -ball.vy
+    
+      /* if (ball.y < paddle.y - paddle.height/6)
         {
             ball.x = paddle.x + paddle.width/2
             console.log("w")
@@ -54,8 +60,14 @@ function animate() {
         else if (ball.y < paddle.y)
         {
             ball.vx= 6
-        }
+        }*/
     }
+
+     if (paddle2.hitTestObject(ball)) {
+        
+         ball.vx *= -1
+         ball.vy = ball.vy
+     }
 
 
     /*if (ball.x > canvas.width + ball.width / 2) {
@@ -64,6 +76,7 @@ function animate() {
 
     }
     */
+
     if (ball.x < ball.width / 2 - 100) {
         ball.vx = -(ball.vx);
         ball.x = canvas.width/2
@@ -72,9 +85,11 @@ function animate() {
     }
     
 
-    if (ball.x > canvas.width - ball.width / 2) {
+    if (ball.x > canvas.width - ball.width / 2 + 100) {
         ball.vx = -ball.vx;
-        counter += 1;
+        ball.x = canvas.width/2
+        ball.y = canvas.height/2
+        //counter += 1;
     }
     if (ball.y < ball.height / 2) {
         ball.vy = -(ball.vy);
@@ -93,26 +108,58 @@ function animate() {
          counter += 1
      }*/
 
-    if (paddle.y < canvas.height - paddle.height / 2) {
-        if (s) {
-            console.log("Moving down");
+    if (paddle.y < canvas.height - paddle.height / 2) 
+    {
+        if (s) 
+        {
+            
             paddle.y += 10;
         }
 
 
-        else if (paddle.y > canvas.height - paddle.height / 2) {
+        else if (paddle.y > canvas.height - paddle.height / 2) 
+        {
             paddle.y = 0;
         }
     }
-    if (paddle.y > paddle.height / 2) {
-        if (w) {
+    if (paddle.y > paddle.height / 2) 
+    {
+        if (w) 
+        {
             //console.log("Moving up");
             paddle.y += -10;
         }
 
 
-        else if (paddle.y < paddle.height / 2) {
+        else if (paddle.y < paddle.height / 2) 
+        {
             paddle.y = 0;
+        }
+    }
+    if (paddle2.y < canvas.height - paddle2.height / 2) {
+        if (down) 
+        {
+            paddle2.y += 10;
+        }
+
+
+        else if (paddle2.y > canvas.height - paddle2.height / 2)
+        {
+            paddle2.y = 0;
+        }
+    }
+    if (paddle2.y > paddle2.height / 2) 
+        {
+        if (up) 
+        {
+            //console.log("Moving up");
+            paddle2.y += -10;
+        }
+
+
+        else if (paddle2.y < paddle2.height / 2) 
+        {
+            paddle2.y = 0;
         }
     }
     ball.move()
@@ -127,6 +174,8 @@ function animate() {
     //}
     ball.draw();
     //ball.counter();
-    //console.log(paddle)
+   //console.log(paddle2)
     paddle.drawrec()
+    paddle2.drawrec2()
+    
 }

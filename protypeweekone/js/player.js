@@ -20,6 +20,14 @@ function Player() {
         context.fillRect((-this.width/2), (-this.height/2), this.width, this.height)
         context.restore();
     }
+    this.drawrec2 = function () {
+        context.save();
+        context.translate(this.x, this.y)
+       // console.log("Working")
+        context.fillStyle = this.color
+        context.fillRect((-this.width/2), (-this.height/2), this.width, this.height)
+        context.restore();
+    }
     this.draw = function () {
         context.save();
         context.translate(this.x,this.y)
@@ -61,9 +69,10 @@ function Player() {
         return this.x + this.width/2
     } 
     this.hitTestObject= function(obj) {
-    
+   // console.log("still")
         if (
             this.right() > obj.left() && 
+            this.left() < obj.right() && 
             this.top() < obj.top() &&
             this.bott() > obj.bott()
          ) {
@@ -71,5 +80,7 @@ function Player() {
         }
         return false;
     }
+    
+   
     
 }
