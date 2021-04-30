@@ -10,7 +10,7 @@ function Player() {
     this.vy = 0;
 
     this.color = "#ff0100";
-    
+     
 this.score = function ()
 {
     
@@ -48,8 +48,9 @@ this.score = function ()
         context.fillStyle = this.color;
         context.beginPath();
         context.arc(0, 0, this.height/2, 0, 2 * Math.PI)
+       
         context.stroke()
-        context.fill()
+       context.fill()
 
 
         context.restore();

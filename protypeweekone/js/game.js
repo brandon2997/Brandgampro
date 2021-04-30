@@ -8,7 +8,7 @@ var counter = 0;
 
 p1soc = 0;
 p2soc = 0;
-
+var img= document.getElementById("ric");
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
 ball = new Player();
@@ -181,5 +181,6 @@ function animate() {
     paddle.drawrec()
     paddle2.drawrec2()
     paddle.drawline()
+    context.drawImage(img,ball.x, ball.y)
     
 }
