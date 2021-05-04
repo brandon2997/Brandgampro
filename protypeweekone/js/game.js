@@ -12,7 +12,7 @@ var img= document.getElementById("ric");
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
 ball = new Player();
-ball.vx = 10;
+ball.vx = 5;
 ball.vy = 0;
 ball.height = 20
 ball.width = 20
@@ -181,6 +181,6 @@ function animate() {
     paddle.drawrec()
     paddle2.drawrec2()
     paddle.drawline()
-    context.drawImage(img,ball.x, ball.y)
+    context.drawImage(img,ball.x-15, ball.y-15,ball.width+10,ball.height+10)
     
 }
