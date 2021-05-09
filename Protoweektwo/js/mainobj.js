@@ -6,27 +6,27 @@ var ball;
 var paddle;
 var counter = 0;
 
-//p1soc = 0;
-//p2soc = 0;
-//var img= document.getElementById("ric");
+p1soc = 0;
+p2soc = 0;
+var img= document.getElementById("ric");
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
 ball = new Player();
-ball.vx = 0;
-ball.vy = 5;
+ball.vx = 5;
+ball.vy = 0;
 ball.height = 20
 ball.width = 20
 
 paddle = new Player()
-paddle.width = 370
-paddle.height = 540
-paddle.x = paddle.width 
+paddle.width = 20
+paddle.height = 100
+paddle.x = paddle.width / 2 + 10
 paddle.y = canvas.height / 2 
-//paddle2 = new Player()
-//paddle2.width = 20
-//paddle2.height = 100
-//paddle2.x = canvas.width - paddle2.width
-//paddle2.y = (canvas.height/2)
+paddle2 = new Player()
+paddle2.width = 20
+paddle2.height = 100
+paddle2.x = canvas.width - paddle2.width
+paddle2.y = (canvas.height/2)
 
 timer = setInterval(animate, interval);
 
@@ -66,19 +66,19 @@ function animate() {
         }*/
     }
 
-   //  if (paddle2.hitTestObject(ball)) {
+     if (paddle2.hitTestObject(ball)) {
         
-   //      ball.vx *= -1
-    //     ball.vy = ball.vy
-    // }
+         ball.vx *= -1
+         ball.vy = ball.vy
+     }
 
 
-    if (ball.x > canvas.width + ball.width / 2) {
+    /*if (ball.x > canvas.width + ball.width / 2) {
         ball.x = -ball.width / 2;
         counter += 1;
 
     }
-    
+    */
 
     if (ball.x < ball.width / 2 - 100) {
         ball.vx = -(ball.vx);
@@ -104,14 +104,14 @@ function animate() {
         counter += 1;
 
     }
-     if (ball.y <= paddle.height )
+    /* if (ball.y <= paddle.height )
      {
          ball.vy = -(ball.vy)
          
          counter += 1
-     }
+     }*/
 
-   /* if (paddle.y < canvas.height - paddle.height / 2) 
+    if (paddle.y < canvas.height - paddle.height / 2) 
     {
         if (s) 
         {
@@ -138,8 +138,8 @@ function animate() {
         {
             paddle.y = 0;
         }
-    } */
-  /*  if (paddle2.y < canvas.height - paddle2.height / 2) {
+    }
+    if (paddle2.y < canvas.height - paddle2.height / 2) {
         if (down) 
         {
             paddle2.y += 10;
@@ -164,23 +164,23 @@ function animate() {
         {
             paddle2.y = 0;
         }
-    }*/
+    }
     ball.move()
     //handles paddle movement
-     if (s) {
+    // if (s) {
     //   console.log("Moving down");
-     paddle.x += 5;
-    }
-    if (w) {
+    // paddle.y += 2;
+    //}
+    //if (w) {
     //  console.log("Moving up");
-    paddle.x += -5;
-    }
+    //paddle.y += -2;
+    //}
     ball.draw();
-    //ball.counter();
+    ball.counter();
    //console.log(paddle2)
-   paddle.drawrec()
-    //paddle2.drawrec2()
-   ball.drawline(paddle)
-   // context.drawImage(img,ball.x-15, ball.y-15,ball.width+10,ball.height+10)
+    paddle.drawrec()
+    paddle2.drawrec2()
+    paddle.drawline()
+    context.drawImage(img,ball.x-15, ball.y-15,ball.width+10,ball.height+10)
     
 }
