@@ -15,12 +15,12 @@ function press(e) {
 		s = true;
 		//console.log("working")
 	}
-	if (e.keyCode == 38)
+	if (e.keyCode == 68)
 	{
 		up = true;
 		
 	}
-	if (e.keyCode == 40)
+	if (e.keyCode == 65)
 	{
 		down = true;
 	}
@@ -35,12 +35,12 @@ function release(e) {
 		s = false;
 		//console.log("working")
 	}
-	if (e.keyCode == 38)
+	if (e.keyCode == 68)
 	{
 		up = false;
 	}
 
-	if (e.keyCode == 40)
+	if (e.keyCode == 65)
 	{
 		down = false;
 	}

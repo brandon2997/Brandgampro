@@ -5,23 +5,23 @@ var interval = 1000 / 60;
 var ball;
 var paddle;
 var counter = 0;
-
-//p1soc = 0;
-//p2soc = 0;
-//var img= document.getElementById("ric");
+var fiction = .67;
+var gravity = 1
+var Bounce = 0
 canvas = document.getElementById("canvas");
 context = canvas.getContext("2d")
-ball = new Player();
+ball = new Player()
 ball.vx = 0;
 ball.vy = 5;
-ball.height = 20
-ball.width = 20
+ball.width = 80
+ball.height = 80
+ball.radius = 40
+
 
 paddle = new Player()
-paddle.width = 370
-paddle.height = 540
-paddle.x = paddle.width 
-paddle.y = canvas.height / 2 
+
+paddle.x = canvas.width / 2 
+paddle.y = 550
 //paddle2 = new Player()
 //paddle2.width = 20
 //paddle2.height = 100
@@ -37,150 +37,92 @@ timer = setInterval(animate, interval);
 function animate() {
     // clear screen
     context.clearRect(0, 0, canvas.width, canvas.height)
-
+    ball.move()
     //Sets up boundary for counter
-    
-    if (paddle.hitTestObject(ball)) {
-        
-        ball.vx = -ball.vx
-        ball.vy = -ball.vy
-    
-      /* if (ball.y < paddle.y - paddle.height/6)
-        {
-            ball.x = paddle.x + paddle.width/2
-            console.log("w")
-            ball.vx= 5
-            ball.vy= -5
 
+    if (paddle.hitTestObject(ball)) {
+        ball.y = paddle.y - paddle.height/2 - ball.radius
+       // ball.vx = -ball.vx
+        ball.vy = -25
+        Bounce += 1
+        if(ball.x > paddle.x + paddle.width/3 ){
+            ball.vx = 5
+        }else if(ball.x < paddle.x - paddle.width/3){
+            ball.vx = -5
+        }else{
+            ball.vx = 0
         }
-        else if (ball.y < paddle.y + paddle.height/6)
-        {
-            ball.x = paddle.x + paddle.width/2
-            console.log("l")
-            ball.vx= 6
-            ball.vy= 6
-        }
-        else if (ball.y < paddle.y)
-        {
-            ball.vx= 6
-        }*/
+
+        
+
+
     }
 
-   //  if (paddle2.hitTestObject(ball)) {
+    if (paddle.x <  paddle.width / 2){
+    
+
+            paddle.x += 5;
         
-   //      ball.vx *= -1
-    //     ball.vy = ball.vy
-    // }
-
-
+        
+    } 
+     if (paddle.x  > canvas.width - paddle.width / 2 ) {
+        paddle.x += -5
+    
+    }
     if (ball.x > canvas.width + ball.width / 2) {
         ball.x = -ball.width / 2;
         counter += 1;
 
     }
-    
 
-    if (ball.x < ball.width / 2 - 100) {
-        ball.vx = -(ball.vx);
-        ball.x = canvas.width/2
-        ball.y = canvas.height/2
-        p1soc += 1;
+
+    if (ball.x < ball.radius) {
+        ball.vx = 10;
+        //Bounce += 1
     }
-    
 
-    if (ball.x > canvas.width - ball.width / 2 + 100) {
-        ball.vx = -ball.vx;
-        ball.x = canvas.width/2
-        ball.y = canvas.height/2
-        p2soc += 1;
+
+    if (ball.x > canvas.width - ball.radius) {
+        ball.vx = -10;
     }
     if (ball.y < ball.height / 2) {
         ball.vy = -(ball.vy);
-        counter += 1;
+        
     }
 
-    if (ball.y > canvas.height - ball.height / 2) {
-        ball.vy = -(ball.vy);
-        counter += 1;
+ 
+   // if (ball.y <= paddle.height) {
+     //   ball.vy = -(ball.vy)
 
-    }
-     if (ball.y <= paddle.height )
-     {
-         ball.vy = -(ball.vy)
-         
-         counter += 1
-     }
-
-   /* if (paddle.y < canvas.height - paddle.height / 2) 
-    {
-        if (s) 
-        {
-            
-            paddle.y += 10;
-        }
-
-
-        else if (paddle.y > canvas.height - paddle.height / 2) 
-        {
-            paddle.y = 0;
-        }
-    }
-    if (paddle.y > paddle.height / 2) 
-    {
-        if (w) 
-        {
-            //console.log("Moving up");
-            paddle.y += -10;
-        }
-
-
-        else if (paddle.y < paddle.height / 2) 
-        {
-            paddle.y = 0;
-        }
-    } */
-  /*  if (paddle2.y < canvas.height - paddle2.height / 2) {
-        if (down) 
-        {
-            paddle2.y += 10;
-        }
-
-
-        else if (paddle2.y > canvas.height - paddle2.height / 2)
-        {
-            paddle2.y = 0;
-        }
-    }
-    if (paddle2.y > paddle2.height / 2) 
-        {
-        if (up) 
-        {
-            //console.log("Moving up");
-            paddle2.y += -10;
-        }
-
-
-        else if (paddle2.y < paddle2.height / 2) 
-        {
-            paddle2.y = 0;
-        }
-    }*/
-    ball.move()
-    //handles paddle movement
-     if (s) {
-    //   console.log("Moving down");
-     paddle.x += 5;
-    }
-    if (w) {
-    //  console.log("Moving up");
-    paddle.x += -5;
-    }
-    ball.draw();
-    //ball.counter();
-   //console.log(paddle2)
-   paddle.drawrec()
-    //paddle2.drawrec2()
-   ball.drawline(paddle)
-   // context.drawImage(img,ball.x-15, ball.y-15,ball.width+10,ball.height+10)
+       
+    //}
+  
     
+    if (ball.y > canvas.height - ball.radius) {
+        ball.y = canvas.height - ball.radius;
+        ball.vy =  -(ball.vy) * fiction;
+        //ball.vx =  -(ball.vx) * fiction
+        Bounce = 0;
+
+    }
+if (down) {
+    
+            paddle.x += -5;
+        }
+   if (up) {
+
+        paddle.x += 5;
+   }
+  //  if (down) {
+//       paddle.x += -5;
+ //   }
+    ball.vy += gravity;
+    
+    ball.drawCircle();
+
+    paddle.drawrec()
+
+    ball.drawline(paddle)
+    paddle.counter();
+
 }
