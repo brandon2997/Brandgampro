@@ -5,6 +5,7 @@ function Player() {
 
     this.width = 250;
     this.height = 40;
+    
     this.radius = this.width/2
 
     this.vx = 0;
