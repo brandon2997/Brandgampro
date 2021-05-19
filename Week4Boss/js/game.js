@@ -51,6 +51,7 @@ var check = 0;
           ball.vx = 0
           ball.x = Player.x
           ball.y = Player.y
+          ball.radius = 40
         } 
         if (pellet >= 1)
         {
@@ -60,6 +61,7 @@ var check = 0;
           ball.move();
           pellet -=1;
           console.log("pellet");
+          ball.radius += 1
         }
         Player.drawrect();
      
