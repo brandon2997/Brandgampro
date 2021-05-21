@@ -36,4 +36,32 @@ function Player()
         this.x += this.vx;
 		this.y += this.vy;
     }
+    this.top = function()
+    {
+        return this.y - this.height/2
+    } 
+    this.bott = function()
+    {
+        return this.y + this.height/2
+    } 
+    this.left = function()
+    {
+        return this.x - this.width/2
+    } 
+    this.right = function()
+    {
+        return this.x + this.width/2
+    } 
+    this.hitTestObject= function(obj) {
+   // console.log("still")
+        if (
+           this.right() > obj.left() && 
+            this.left() < obj.right() && 
+            this.top() < obj.bott() &&
+            this.bott() > obj.top()
+         ) {
+            return true;
+        }
+        return false;
+    }
 }
