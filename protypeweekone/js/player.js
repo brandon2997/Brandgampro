@@ -88,6 +88,6 @@ function Player() {
         return false;
     }
     
-   
+   //loan number needed is 30959
     
 }
