@@ -3,6 +3,7 @@ var a = false;
 var s = false;
 var d = false;
 var space = false
+var shift = false
 
 document.addEventListener("keydown", press);
 document.addEventListener("keyup", release);
@@ -32,6 +33,10 @@ function press(e)
 	{
 		space = true;
 	}
+	if(e.keyCode == 16)
+	{
+		shift = true;
+	}
 }
 
 function release(e)
@@ -56,5 +61,9 @@ function release(e)
 	if(e.keyCode == 32)
 	{
 		space = false;
+	}
+	if(e.keyCode == 16)
+	{
+		shift = false;
 	}
 }
