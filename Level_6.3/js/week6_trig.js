@@ -41,6 +41,11 @@ function animate()
 {
 	
 	context.clearRect(0,0,canvas.width, canvas.height);	
+
+	var dx = player.x - turret.x 
+	var dy = player.y - turret.y
+	var rad = Math.atan2(dy,dx)
+	turret.angle = rad * 180/Math.PI 
 	
 	/*-----------This function move the player-----------*/
 	//w and s move forward and backward
