@@ -31,6 +31,7 @@ function Player()
         context.fill();
     context.restore();
     }
+    
     this.move = function()
     {
         this.x += this.vx;
